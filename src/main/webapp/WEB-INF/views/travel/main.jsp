@@ -20,31 +20,31 @@ height:100px;
 <script>
 jQuery(document).ready(function(){
 	jQuery.ajax({          
-	    url: '/PublicData.do',
+	    url: '/travel/dataList',
 	    type: 'get',
 	    dataType: 'json',
 	    success: function(data){
-	        console.log("datas:"+data.response.body.items.item);
 	        var datas = data.response.body.items.item;
 	        
-	        console.log("length:"+datas.length);
 	        var dataList = "";
 	        for(var i=0; i<datas.length; i++){
 	            var output = '';
 	            output = '<tr>';
 	            output += '<td><img class="thumnail" src="'+ datas[i].firstimage2 +'"></td>';
 	            output += '<td>'+ datas[i].addr1 +'</td>';
-	            output += '<td>'+ datas[i].title +'</td>';
+	            output += '<td><a href="javascript:void(0);" onclick="javascript:doView('+datas[i].contentid+');">'+ datas[i].title +'</a></td>';
 	            output += '<td>'+ datas[i].mapx +'</td>';
 	            output += '<td>'+ datas[i].mapy +'</td>';
 	            output += '</tr>';
 	            dataList += output;
 	        }
-	        console.log(dataList);
 	        jQuery("#DataTop").after(dataList);
 	    }
 	});    
 });
+function doView(contentid){
+	location.href="/travel/view?contentid="+contentid;
+}
 </script>
 
 <div class="body">
