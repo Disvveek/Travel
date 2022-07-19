@@ -14,8 +14,7 @@ th, td{
 border:1px solid black;
 }
 .viewImage{
-width:500px;
-height:500px;
+width:100%;
 }
 </style>
 <script>
