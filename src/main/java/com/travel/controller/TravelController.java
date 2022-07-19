@@ -10,8 +10,8 @@ public class TravelController {
 	
 	@GetMapping("/main")
 	public String travelMain() {
-		
 		System.out.println("여행지찾기 접속");
+		
 		return "/travel/main";
 	}
 

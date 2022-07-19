@@ -11,14 +11,10 @@
 	padding-bottom:10px;
 }
 .body{
-	height:80%;
 	padding:10px;
 	text-align:center;
 }
 .footer{
-	position: absolute;
-    left: 0;
-    bottom: 0;
     width: 100%;
 	padding: 10px 0;
 	text-align: center;
@@ -57,6 +53,7 @@ a:visited{
 	color:black;
 }
 </style>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <body>
 <div class="header">
 	<span class="logo" style="color:red;"><a href="/main/index"><image src="" />LOGO</a></span>
