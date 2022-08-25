@@ -26,8 +26,9 @@ jQuery(document).ready(function(){
 	    data: {"contentid":contentid},
 	    dataType: 'json',
 	    success: function(data){
-			var datas = data.response.body.items.item;
+			var datas = data.response.body.items.item[0];
             var output = '';
+            console.log(datas.title);
             output += '<tr>';
             output += '<td>제목</td>';
             output += '<td>'+ datas.title +'</td>';
