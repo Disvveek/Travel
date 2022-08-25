@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/travel/*")
@@ -29,6 +30,7 @@ public class TravelController {
 	}
 	//데이터 리스트 호출(메인)
 	@GetMapping("/dataList")
+	@ResponseBody
 	public void GetData_main(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("데이터 리스트");
         // TODO Auto-generated method stub
@@ -37,13 +39,14 @@ public class TravelController {
         
         String addr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=";
         String serviceKey = "XtoNqIEqToOMbwaM7hVcGQ9O5ZCbxXuo%2B3h8T0N4e7QqoiPAqCCzZmVNaSoLeGVo8d7Fctya%2BON9UEjEHP5jRg%3D%3D";
+        String pageNo = request.getParameter("pageNo");
         String parameter = "";
 //        serviceKey = URLEncoder.encode(serviceKey,"utf-8");
         PrintWriter out = response.getWriter();
         parameter = parameter + "&" + "numOfRows=10";
-        parameter = parameter + "&" + "pageNo=1";
+        parameter = parameter + "&" + "pageNo="+pageNo;
         parameter = parameter + "&" + "MobileOS=ETC";
-        parameter = parameter + "&" + "pageNo=1&numOfRows=10";
+        parameter = parameter + "&" + "numOfRows=10";
         parameter = parameter + "&" + "MobileOS=ETC";
         parameter = parameter + "&" + "MobileApp=Travel";
         parameter = parameter + "&" + "ListYN=Y";
@@ -62,7 +65,9 @@ public class TravelController {
         in.close();
         bos.close();
         
-        String data = bos.getOut().toString();        
+        System.out.println("URL: "+url);
+        
+        String data = bos.getOut().toString();
         out.println(data);
         
         JSONObject json = new JSONObject();
@@ -109,6 +114,8 @@ public class TravelController {
         
         String data = bos.getOut().toString();        
         out.println(data);
+        
+        System.out.println("URL: "+url);
         
         JSONObject json = new JSONObject();
         json.put("data", data);

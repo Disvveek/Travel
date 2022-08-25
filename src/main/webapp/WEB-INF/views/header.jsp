@@ -52,6 +52,15 @@ a:visited{
 	text-decoration:none;
 	color:black;
 }
+a{
+	text-decoration:none;
+	color:black;
+}
+a:hover{
+	color:blue;
+	font-size:larger;
+	
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <body>
